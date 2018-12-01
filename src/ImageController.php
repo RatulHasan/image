@@ -11,5 +11,4 @@ class ImageController extends Controller
     {
         echo $a + $b;
     }
-
 }
