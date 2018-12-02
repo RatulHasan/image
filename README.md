@@ -7,10 +7,24 @@ composer require ratulhasan/image
 ```
 
 ### Usage
+
 ```
-\RatulHasan\Image\Image::createThumb('upload file', 'extension', 'destination path', 'desired_width', 'desired_height')
+$image_file = 'upload_file.jpg'
+$destination = 'uploaded_path/upload_file.jpg'
+$ext = 'upload_file.extension' (optional)
+$desired_width = 600 (optional)
+$desired_height = 600 (optional)
 ```
 
 ```
-\RatulHasan\Image\Image::watermark($target, $watermark_file, $position)
+\RatulHasan\Image\Image::createThumb($image_file, $destination, $ext, $desired_width, $desired_height)
+```
+
+
+```
+$target = 'uploaded_path/upload_file.jpg'
+$watermark_file = 'watermark_file.png' (supports only png file)
+```
+```
+\RatulHasan\Image\Image::watermark($target, $watermark_file)
 ```
