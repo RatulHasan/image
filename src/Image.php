@@ -35,17 +35,16 @@ class Image
         if(!$desired_height) {
             $desired_height = $data[1];
         }
-        if(!$ext) {
+        if(!$ext || $ext == '') {
             $ext = image_type_to_extension($data[2]);
         }
-
 
         /*If no dimenstion for thumbnail given, return false */
         if (!$desired_height && !$desired_width) return false;
 //        $fparts = pathinfo($src);
 //        $ext = strtolower($fparts['extension']);
         /* if its not an image return false */
-        if (!in_array($ext, array('.gif', '.jpg', '.png', '.jpeg'))){
+        if (!in_array($ext, array('gif', 'jpg', 'png', 'jpeg'))){
             if(!in_array($ext, array('.gif', '.jpg', '.png', '.jpeg'))){
                 return false;
             }
@@ -79,11 +78,11 @@ class Image
 //        if (!in_array($ext, array('gif', 'jpg', 'png', 'jpeg'))) $ext = 'jpg';
 //        $destination = $fparts['dirname'] . '/' . $fparts['filename'] . '.' . $ext;
 
-        if ($ext == 'gif')
+        if ($ext == 'gif' || $ext == '.gif')
             imagegif($virtual_image, $destination);
-        else if ($ext == 'png')
+        else if ($ext == 'png' || $ext == '.png')
             imagepng($virtual_image, $destination, 1);
-        else if ($ext == 'jpg' || $ext == 'jpeg')
+        else if ($ext == 'jpg' || $ext == 'jpeg' || $ext == '.jpg' || $ext == '.jpeg')
             imagejpeg($virtual_image, $destination, 100);
 
         return array(
