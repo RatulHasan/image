@@ -80,7 +80,7 @@ class Image
     /**
      * @param $target
      * @param $watermark_file
-     * @param $new_copy
+     * @param $position
      */
     public static function watermark($target, $watermark_file, $position)
     {

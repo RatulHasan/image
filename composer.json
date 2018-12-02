@@ -2,6 +2,7 @@
     "name": "ratulhasan/image",
     "description": "Laravel Image for image manipulations.",
     "license": "MIT",
+    "type": "library",
     "authors": [
         {
             "name": "Ratul Hasan",
@@ -9,5 +10,10 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {}
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "RatulHasan\\Image\\": "src"
+        }
+    }
 }
