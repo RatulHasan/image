@@ -45,8 +45,10 @@ class Image
 //        $fparts = pathinfo($src);
 //        $ext = strtolower($fparts['extension']);
         /* if its not an image return false */
-        if (!in_array($ext, array('.gif', '.jpg', '.png', '.jpeg')) || !in_array($ext, array('gif', 'jpg', 'png', 'jpeg'))){
-            return false;
+        if (!in_array($ext, array('.gif', '.jpg', '.png', '.jpeg'))){
+            if(!in_array($ext, array('.gif', '.jpg', '.png', '.jpeg'))){
+                return false;
+            }
         }
 
         /* read the source image */
