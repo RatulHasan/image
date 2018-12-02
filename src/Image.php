@@ -52,11 +52,11 @@ class Image
         }
 
         /* read the source image */
-        if ($ext == 'gif')
+        if ($ext == 'gif' || $ext == '.gif')
             $resource = imagecreatefromgif($image_file);
-        else if ($ext == 'png')
+        else if ($ext == 'png' || $ext == '.png')
             $resource = imagecreatefrompng($image_file);
-        else if ($ext == 'jpg' || $ext == 'jpeg')
+        else if ($ext == 'jpg' || $ext == 'jpeg' || $ext == '.jpg' || $ext == '.jpeg')
             $resource = imagecreatefromjpeg($image_file);
 
         list($width, $height, $type, $attr) = getimagesize($image_file);
