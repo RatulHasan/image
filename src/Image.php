@@ -24,24 +24,40 @@ class Image
      * @param bool $desired_height
      * @return array|bool
      */
-    public static function createThumb($src, $ext, $destination, $desired_width = false, $desired_height = false)
+    public static function createThumb($image_file, $destination, $ext = false, $desired_width = false, $desired_height = false)
     {
+
+        // If optional arguments are not defined
+        $data = getimagesize($image_file);
+        if(!$desired_width) {
+            $desired_width = $data[0];
+        }
+        if(!$desired_height) {
+            $desired_height = $data[1];
+        }
+        if(!$ext) {
+            $ext = image_type_to_extension($data[2]);
+        }
+
+
         /*If no dimenstion for thumbnail given, return false */
         if (!$desired_height && !$desired_width) return false;
 //        $fparts = pathinfo($src);
 //        $ext = strtolower($fparts['extension']);
         /* if its not an image return false */
-        if (!in_array($ext, array('gif', 'jpg', 'png', 'jpeg'))) return false;
+        if (!in_array($ext, array('.gif', '.jpg', '.png', '.jpeg')) || !in_array($ext, array('gif', 'jpg', 'png', 'jpeg'))){
+            return false;
+        }
 
         /* read the source image */
         if ($ext == 'gif')
-            $resource = imagecreatefromgif($src);
+            $resource = imagecreatefromgif($image_file);
         else if ($ext == 'png')
-            $resource = imagecreatefrompng($src);
+            $resource = imagecreatefrompng($image_file);
         else if ($ext == 'jpg' || $ext == 'jpeg')
-            $resource = imagecreatefromjpeg($src);
+            $resource = imagecreatefromjpeg($image_file);
 
-        list($width, $height, $type, $attr) = getimagesize($src);
+        list($width, $height, $type, $attr) = getimagesize($image_file);
 
         /* find the "desired height" or "desired width" of this thumbnail, relative to each other, if one of them is not given  */
         if (!$desired_height) $desired_height = floor($height * ($desired_width / $width));
@@ -82,7 +98,7 @@ class Image
      * @param $watermark_file
      * @param $position
      */
-    public static function watermark($target, $watermark_file, $position)
+    public static function watermark($target, $watermark_file, $position = false)
     {
         $watermark = imagecreatefrompng($watermark_file);
         imagealphablending($watermark, false);

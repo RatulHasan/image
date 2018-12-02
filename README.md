@@ -8,7 +8,7 @@ composer require ratulhasan/image
 
 ### Usage
 ```
-\RatulHasan\Image\Image::createThumb('upload file', 'extension', 'destination where to save image', 'desired_width', 'desired_height')
+\RatulHasan\Image\Image::createThumb('upload file', 'extension', 'destination path', 'desired_width', 'desired_height')
 ```
 
 ```
