@@ -109,22 +109,20 @@ class Image
         $watermark_file_width = imagesx($watermark);
         $watermark_file_height = imagesy($watermark);
 
-        if ($position === 'right-corner') {
-//            For right-corner watermark
-            $dst_x = ($img_width) - ($watermark_file_width);
-            $dst_y = ($img_height) - ($watermark_file_height);
+//        For right-corner watermark
+        $dst_x = ($img_width) - ($watermark_file_width);
+        $dst_y = ($img_height) - ($watermark_file_height);
 
-        }
-        //For bottom-middle watermark
+//        For bottom-middle watermark
 //        $dst_x = ($img_width/2) - ($watermark_file_width/2);
 //        $dst_y = ($img_height) - ($watermark_file_height);
 
-        //For right-middle watermark
+//        For right-middle watermark
 //        $dst_x = ($img_width) - ($watermark_file_width);
 //        $dst_y = ($img_height/2) - ($watermark_file_height/2);
 
 
-        //For middle watermark
+//        For middle watermark
 //        $dst_x = ($img_width/2) - ($watermark_file_width);
 //        $dst_y = ($img_height/2) - ($watermark_file_height/2);
 
