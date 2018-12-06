@@ -1,7 +1,8 @@
 <?php
 /**
- * Laravel Image is an image manipulation package for Laravel.
+ * Image package is an image manipulation package for PHP.
  * It supports basic image manipulations such as resize, watermark.
+ * You can use this package with any PHP projects.
  *
  * @author Ratul Hasan <ratuljh@gmail.com>
  * @url https://www.ratulhasan.me
@@ -17,8 +18,7 @@ namespace RatulHasan\Image;
 class Image
 {
     /**
-     * @param $src
-     * @param $ext
+     * @param $image_file
      * @param $destination
      * @param bool $desired_width
      * @param bool $desired_height
@@ -100,7 +100,7 @@ class Image
     /**
      * @param $target
      * @param $watermark_file
-     * @param $position
+     * @param bool $position
      */
     public static function watermark($target, $watermark_file, $position = false)
     {
