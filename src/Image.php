@@ -24,28 +24,27 @@ class Image
      * @param bool $desired_height
      * @return array|bool
      */
-    public static function createThumb($image_file, $destination, $ext = false, $desired_width = false, $desired_height = false)
+    public static function createThumb($image_file, $destination, $desired_width = false, $desired_height = false)
     {
 
         // If optional arguments are not defined
         $data = getimagesize($image_file);
-        if(!$desired_width) {
+        if (!$desired_width) {
             $desired_width = $data[0];
         }
-        if(!$desired_height) {
+        if (!$desired_height) {
             $desired_height = $data[1];
         }
-        if(!$ext || $ext == '') {
-            $ext = image_type_to_extension($data[2]);
-        }
+//        Get image extension from file
+        $ext = image_type_to_extension($data[2]);
 
         /*If no dimenstion for thumbnail given, return false */
         if (!$desired_height && !$desired_width) return false;
 //        $fparts = pathinfo($src);
 //        $ext = strtolower($fparts['extension']);
         /* if its not an image return false */
-        if (!in_array($ext, array('gif', 'jpg', 'png', 'jpeg'))){
-            if(!in_array($ext, array('.gif', '.jpg', '.png', '.jpeg'))){
+        if (!in_array($ext, array('gif', 'jpg', 'png', 'jpeg'))) {
+            if (!in_array($ext, array('.gif', '.jpg', '.png', '.jpeg'))) {
                 return false;
             }
         }
@@ -57,6 +56,8 @@ class Image
             $resource = imagecreatefrompng($image_file);
         else if ($ext == 'jpg' || $ext == 'jpeg' || $ext == '.jpg' || $ext == '.jpeg')
             $resource = imagecreatefromjpeg($image_file);
+        else
+            return false;
 
         list($width, $height, $type, $attr) = getimagesize($image_file);
 
@@ -84,6 +85,8 @@ class Image
             imagepng($virtual_image, $destination, 1);
         else if ($ext == 'jpg' || $ext == 'jpeg' || $ext == '.jpg' || $ext == '.jpeg')
             imagejpeg($virtual_image, $destination, 100);
+        else
+            return false;
 
         return array(
             'width' => $width,
@@ -104,7 +107,8 @@ class Image
         $watermark = imagecreatefrompng($watermark_file);
         imagealphablending($watermark, false);
         imagesavealpha($watermark, true);
-        $img = imagecreatefromjpeg($target);
+        $img = imagecreatefromstring(file_get_contents($target));
+//        $img = imagecreatefromjpeg($target);
         $img_width = imagesx($img);
         $img_height = imagesy($img);
         $watermark_file_width = imagesx($watermark);

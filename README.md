@@ -11,13 +11,12 @@ composer require ratulhasan/image
 ```
 $image_file = 'upload_file.jpg'
 $destination = 'uploaded_path/upload_file.jpg'
-$ext = 'upload_file.extension' (optional)
 $desired_width = 600 (optional)
 $desired_height = 600 (optional)
 ```
 
 ```
-\RatulHasan\Image\Image::createThumb($image_file, $destination, $ext, $desired_width, $desired_height)
+\RatulHasan\Image\Image::createThumb($image_file, $destination, $desired_width, $desired_height)
 ```
 
 
