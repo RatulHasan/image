@@ -1,5 +1,5 @@
 # image
-Laravel Image is an image manipulation package for Laravel. It supports basic image manipulations such as resize, watermark.
+**Image** package is an image manipulation package for **PHP**. It supports basic image manipulations such as resize, watermark. You can use this package with any **PHP** projects.
 
 ### Installing
 ```
