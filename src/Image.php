@@ -131,6 +131,7 @@ class Image
 //        $dst_x = ($img_width/2) - ($watermark_file_width);
 //        $dst_y = ($img_height/2) - ($watermark_file_height/2);
 
+
         imagecopy($img, $watermark, $dst_x, $dst_y, 0, 0, $watermark_file_width, $watermark_file_height);
         imagejpeg($img, $target, 100);
         imagedestroy($img);
